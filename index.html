@@ -11,7 +11,6 @@
   h1{text-align:center;font-size:34px;margin:0 0 8px;font-weight:700;}
   h2{text-align:center;font-size:20px;margin:0 0 26px;font-weight:600;}
 
-  /* Matrix mit Zeilen-Sync */
   .matrix{background:rgba(255,255,255,0.08);padding:32px;border-radius:18px;display:grid;gap:24px;}
   .row{display:grid;grid-template-columns:repeat(3, minmax(0,1fr));column-gap:32px;align-items:start;}
   .col-header{font-size:18px;font-weight:700;text-align:center;}
@@ -34,177 +33,166 @@
 
   footer{text-align:center;font-size:14px;border-top:1px solid rgba(255,255,255,0.3);padding-top:12px;margin-top:26px;}
   footer a{color:#fff;text-decoration:none;}
+  footer .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 </style>
 </head>
 <body>
 <div class="container">
 
-  <div class="top-brand">Ingerfeld + Laube</div>
+<div class="top-brand">Ingerfeld + Laube</div>
 
-  <h1>Wie lässt sich Unterricht öffnen?</h1>
-  <h2>Mit dem Schieberegler Dimensionen der Unterrichtsöffnung reflektieren</h2>
+<h1>Wie lässt sich Unterricht öffnen?</h1>
+<h2>Mit dem Schieberegler Dimensionen der Unterrichtsöffnung reflektieren</h2>
 
-  <div class="matrix">
-    <!-- Kopfzeile -->
-    <div class="row">
-      <div class="col-header">I. Inhaltlich-didaktische sowie methodische Öffnung</div>
-      <div class="col-header">II. Prozessuale Öffnung</div>
-      <div class="col-header">III. Bewertungsbezogene Öffnung</div>
-    </div>
+<div class="matrix">
 
-    <!-- Zeile 1: I.1 – II.1 – III.1 -->
-    <div class="row">
-      <div class="dimension">
-        <div class="label">Thema</div>
-        <input class="slider" type="range" min="1" max="3" value="1">
-        <div class="desc">
-          <div>Vollständig vorgegeben und festgelegt.</div>
-          <div>Vorgegeben mit Wahlmöglichkeiten in der Ausgestaltung.</div>
-          <div>Selbstwählbar innerhalb eines Rahmens.</div>
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-header">I. Inhaltlich-didaktische sowie methodische Öffnung</div>
+    <div class="col-header">II. Prozessuale Öffnung</div>
+    <div class="col-header">III. Bewertungsbezogene Öffnung</div>
+  </div>
 
-      <div class="dimension">
-        <div class="label">Arbeitstempo</div>
-        <input class="slider" type="range" min="1" max="3" value="1">
-        <div class="desc">
-          <div>Einheitliches Tempo für alle.</div>
-          <div>Teilweise individuelles Tempo.</div>
-          <div>Individuelles Arbeitstempo.</div>
-        </div>
-      </div>
-
-      <div class="dimension">
-        <div class="label">Meta-Lernen</div>
-        <input class="slider" type="range" min="1" max="3" value="1">
-        <div class="desc">
-          <div>Fachbezogene Lernstrategien werden thematisiert.</div>
-          <div>Fachbezogene Lernstrategien werden reflektiert.</div>
-          <div>Fachbezogene Lernstrategien werden eingeübt und verwendet.</div>
-        </div>
+  <div class="row">
+    <div class="dimension">
+      <div class="label">Thema</div>
+      <input class="slider" type="range" min="1" max="3" value="1">
+      <div class="desc">
+        <div>Vollständig vorgegeben und festgelegt.</div>
+        <div>Vorgegeben mit Wahlmöglichkeiten in der Ausgestaltung.</div>
+        <div>Selbstwählbar innerhalb eines Rahmens.</div>
       </div>
     </div>
-
-    <!-- Zeile 2: I.2 – II.2 – III.2 -->
-    <div class="row">
-      <div class="dimension">
-        <div class="label">Aufgabenstellung</div>
-        <input class="slider" type="range" min="1" max="3" value="1">
-        <div class="desc">
-          <div>Aufgaben mit einer richtigen Lösung.</div>
-          <div>Aufgaben mit mehreren möglichen Lösungen.</div>
-          <div>Komplexe Aufgaben mit selbständiger Problemfindung und -lösung.</div>
-        </div>
-      </div>
-
-      <div class="dimension">
-        <div class="label">Lernschrittfolge</div>
-        <input class="slider" type="range" min="1" max="3" value="1">
-        <div class="desc">
-          <div>Reihenfolge von Lehrkraft festgelegt.</div>
-          <div>Reihenfolge gemeinsam festgelegt.</div>
-          <div>Schüler:innen legen Reihenfolge fest.</div>
-        </div>
-      </div>
-
-      <div class="dimension">
-        <div class="label">Feedbackprozesse</div>
-        <input class="slider" type="range" min="1" max="3" value="1">
-        <div class="desc">
-          <div>Feedback durch Lehrkraft, meist summativ.</div>
-          <div>Peer-, Lehrkraft- und Selbstfeedback in vorgegebenen Strukturen, auch formativ.</div>
-          <div>Feedbackprozesse frei wähl- und gestaltbar, primär formativ.</div>
-        </div>
+    <div class="dimension">
+      <div class="label">Arbeitstempo</div>
+      <input class="slider" type="range" min="1" max="3" value="1">
+      <div class="desc">
+        <div>Einheitliches Tempo für alle.</div>
+        <div>Teilweise individuelles Tempo.</div>
+        <div>Individuelles Arbeitstempo.</div>
       </div>
     </div>
-
-    <!-- Zeile 3: I.3 – II.3 – III.3 -->
-    <div class="row">
-      <div class="dimension">
-        <div class="label">Lernprodukte</div>
-        <input class="slider" type="range" min="1" max="3" value="1">
-        <div class="desc">
-          <div>Einheitliche Produktform vorgegeben.</div>
-          <div>Wahl zwischen Produktformaten möglich.</div>
-          <div>Freie Wahl von Produktform und Darstellung.</div>
-        </div>
+    <div class="dimension">
+      <div class="label">Meta-Lernen</div>
+      <input class="slider" type="range" min="1" max="3" value="1">
+      <div class="desc">
+        <div>Fachbezogene Lernstrategien werden thematisiert.</div>
+        <div>Fachbezogene Lernstrategien werden reflektiert.</div>
+        <div>Fachbezogene Lernstrategien werden eingeübt und verwendet.</div>
       </div>
-
-      <div class="dimension">
-        <div class="label">Zielfestlegung</div>
-        <input class="slider" type="range" min="1" max="3" value="1">
-        <div class="desc">
-          <div>Lernziele ausschließlich durch Lehrkraft definiert.</div>
-          <div>Mitbestimmung der Ziele.</div>
-          <div>Eigenständige Formulierung individueller Ziele.</div>
-        </div>
-      </div>
-
-      <div class="dimension">
-        <div class="label">Beteiligung an Bewertung</div>
-        <input class="slider" type="range" min="1" max="3" value="1">
-        <div class="desc">
-          <div>Bewertungskriterien vorgegeben, Bewertung durch Lehrkraft.</div>
-          <div>Mitbestimmung einzelner Kriterien und Beteiligung an Gewichtigungen.</div>
-          <div>Gemeinsame Entwicklung und Anwendung von Bewertungskriterien.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Zeile 4: I.4 – (leer) – (leer) -->
-    <div class="row">
-      <div class="dimension">
-        <div class="label">Lernwege, Arbeitsformen, Material, Methoden</div>
-        <input class="slider" type="range" min="1" max="3" value="1">
-        <div class="desc">
-          <div>Lehrkraft steuert und gibt für alle vor.</div>
-          <div>Eine Auswahl wird angeboten.</div>
-          <div>Eigenständige Planung und Gestaltung.</div>
-        </div>
-      </div>
-      <div></div><div></div>
     </div>
   </div>
 
-  <h2>Formatspinne Unterrichtsöffnung</h2>
-  <div class="controls">
-    <button id="btnReset" class="btn btn-reset">Alle Regler zurücksetzen</button>
-    <button id="btnSave" class="btn btn-save">Spinne herunterladen</button>
-  </div>
-  <div id="radarCanvasWrap">
-    <canvas id="radarChart" width="520" height="520"></canvas>
+  <div class="row">
+    <div class="dimension">
+      <div class="label">Aufgabenstellung</div>
+      <input class="slider" type="range" min="1" max="3" value="1">
+      <div class="desc">
+        <div>Aufgaben mit einer richtigen Lösung.</div>
+        <div>Aufgaben mit mehreren möglichen Lösungen.</div>
+        <div>Komplexe Aufgaben mit selbständiger Problemfindung und -lösung.</div>
+      </div>
+    </div>
+    <div class="dimension">
+      <div class="label">Lernschrittfolge</div>
+      <input class="slider" type="range" min="1" max="3" value="1">
+      <div class="desc">
+        <div>Reihenfolge von Lehrkraft festgelegt.</div>
+        <div>Reihenfolge gemeinsam festgelegt.</div>
+        <div>Schüler:innen legen Reihenfolge fest.</div>
+      </div>
+    </div>
+    <div class="dimension">
+      <div class="label">Feedbackprozesse</div>
+      <input class="slider" type="range" min="1" max="3" value="1">
+      <div class="desc">
+        <div>Feedback durch Lehrkraft, meist summativ.</div>
+        <div>Peer-, Lehrkraft- und Selbstfeedback in vorgegebenen Strukturen, auch formativ.</div>
+        <div>Feedbackprozesse frei wähl- und gestaltbar, primär formativ.</div>
+      </div>
+    </div>
   </div>
 
-  <footer>
-    <strong>Ingerfeld + Laube</strong> •
-    <a href="https://www.ingerfeldundlaube.de" target="_blank">www.ingerfeldundlaube.de</a> •
-    Instagram:<a href="https://instagram.com/ingerfeldundlaube" target="_blank">@ingerfeldundlaube</a>
-  </footer>
+  <div class="row">
+    <div class="dimension">
+      <div class="label">Lernprodukte</div>
+      <input class="slider" type="range" min="1" max="3" value="1">
+      <div class="desc">
+        <div>Einheitliche Produktform vorgegeben.</div>
+        <div>Wahl zwischen Produktformaten möglich.</div>
+        <div>Freie Wahl von Produktform und Darstellung.</div>
+      </div>
+    </div>
+    <div class="dimension">
+      <div class="label">Zielfestlegung</div>
+      <input class="slider" type="range" min="1" max="3" value="1">
+      <div class="desc">
+        <div>Lernziele ausschließlich durch Lehrkraft definiert.</div>
+        <div>Mitbestimmung der Ziele.</div>
+        <div>Eigenständige Formulierung individueller Ziele.</div>
+      </div>
+    </div>
+    <div class="dimension">
+      <div class="label">Beteiligung an Bewertung</div>
+      <input class="slider" type="range" min="1" max="3" value="1">
+      <div class="desc">
+        <div>Bewertungskriterien vorgegeben, Bewertung durch Lehrkraft.</div>
+        <div>Mitbestimmung einzelner Kriterien und Beteiligung an Gewichtigungen.</div>
+        <div>Gemeinsame Entwicklung und Anwendung von Bewertungskriterien.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="dimension">
+      <div class="label">Lernwege, Arbeitsformen, Material, Methoden</div>
+      <input class="slider" type="range" min="1" max="3" value="1">
+      <div class="desc">
+        <div>Lehrkraft steuert und gibt für alle vor.</div>
+        <div>Eine Auswahl wird angeboten.</div>
+        <div>Eigenständige Planung und Gestaltung.</div>
+      </div>
+    </div>
+    <div></div><div></div>
+  </div>
+
+</div>
+
+<h2>Formatspinne Unterrichtsöffnung</h2>
+<div class="controls">
+  <button id="btnReset" class="btn btn-reset">Alle Regler zurücksetzen</button>
+  <button id="btnSave" class="btn btn-save">Spinne herunterladen</button>
+</div>
+<div id="radarCanvasWrap">
+  <canvas id="radarChart" width="520" height="520"></canvas>
+</div>
+
+<footer>
+  <div class="row">
+    <strong>Ingerfeld + Laube</strong>
+    • <a href="https://www.ingerfeldundlaube.de" target="_blank">www.ingerfeldundlaube.de</a>
+    • Instagram:<a href="https://instagram.com/ingerfeldundlaube" target="_blank">@ingerfeldundlaube</a>
+  </div>
+</footer>
 
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-/* Slider in der sichtbaren ZEILEN-Reihenfolge erfassen */
 const sliders = Array.from(document.querySelectorAll('.slider'));
 
-/* Chart-Labels in gewünschter Reihenfolge: I(4) → II(3) → III(3)  */
 const labels = [
   "Thema","Aufgabenstellung","Lernprodukte","Lernwege/Methoden/Material",
   "Arbeitstempo","Lernschrittfolge","Zielfestlegung",
   "Meta-Lernen","Feedbackprozesse","Beteiligung an Bewertung"
 ];
 
-/* Mapping von Slider-Index (zeilenweise) → Chart-Index
-   [ I1, II1, III1, I2, II2, III2, I3, II3, III3, I4 ] → [0,4,7,1,5,8,2,6,9,3] */
 const map = [0,4,7,1,5,8,2,6,9,3];
 
-/* Chart aufsetzen */
 const ctx = document.getElementById('radarChart');
 const chart = new Chart(ctx,{
   type:'radar',
   data:{labels, datasets:[{
-    data: map.map(i => 1),
+    data: map.map(()=>1),
     borderColor:'#fff',
     backgroundColor:'rgba(255,255,255,0.16)',
     pointBackgroundColor:'#c52828',
@@ -223,7 +211,6 @@ const chart = new Chart(ctx,{
   }
 });
 
-/* Slider-Events → via Mapping ins Chart schreiben */
 sliders.forEach((s,idx)=>{
   s.addEventListener('input', ()=>{
     const chartIdx = map[idx];
@@ -232,16 +219,25 @@ sliders.forEach((s,idx)=>{
   });
 });
 
-/* Reset & Save */
-document.getElementById('btnReset').addEventListener('click',()=>{
-  sliders.forEach(s=>s.value=1);
-  chart.data.datasets[0].data = map.map(i => 1);
+btnReset.addEventListener('click',()=>{
+  sliders.forEach(s=>s.value = 1);
+  chart.data.datasets[0].data = map.map(()=>1);
   chart.update();
 });
-document.getElementById('btnSave').addEventListener('click',()=>{
-  const url = chart.toBase64Image();
-  const a = document.createElement('a'); a.href=url; a.download='formatspinne-unterrichtsoeffnung.png'; a.click();
+
+/* ✅ Download als PNG für Apple & Windows */
+btnSave.addEventListener('click',()=>{
+  const canvas = document.getElementById('radarChart');
+  const link = document.createElement('a');
+  canvas.toBlob(function(blob){
+    const url = URL.createObjectURL(blob);
+    link.href = url;
+    link.download = 'formatspinne-unterrichtsoeffnung.png';
+    link.click();
+    URL.revokeObjectURL(url);
+  }, 'image/png');
 });
 </script>
+
 </body>
 </html>
