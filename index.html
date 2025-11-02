@@ -330,9 +330,9 @@ function adjustValuesForArea(vals) {
 
 sliders.forEach((sliderEl, i) => {
   sliderEl.addEventListener('input', () => {
-    values[i] = parseInt(sliderEl.value);
-    const adjustedValues = adjustValuesForArea([...values]);
-    chart.data.datasets[1].data = adjustedValues;
+    const targetIdx = sliderToLabelIndex[i];
+    values[targetIdx] = parseInt(sliderEl.value, 10);
+    chart.data.datasets[1].data = values;
     chart.update();
   });
 });
