@@ -76,7 +76,6 @@
       <div>Selbstwählbar innerhalb eines Rahmens.</div>
     </div>
   </div>
-
   <!-- I.2 Aufgabenstellung -->
   <div class="dimension">
     <div class="label">Aufgabenstellung</div>
@@ -84,10 +83,9 @@
     <div class="desc">
       <div>Aufgaben mit einer richtigen Lösung.</div>
       <div>Aufgaben mit mehreren möglichen Lösungen.</div>
-      <div>Komplexe Aufgaben mit eigenständiger Problemfindung und -lösung.</div>
+      <div>Komplexe Aufgaben mit selbständiger Problemfindung und -lösung.</div>
     </div>
   </div>
-
   <!-- I.3 Lernprodukte -->
   <div class="dimension">
     <div class="label">Lernprodukte</div>
@@ -98,8 +96,7 @@
       <div>Freie Wahl von Produktform und Darstellung.</div>
     </div>
   </div>
-
-  <!-- I.4 Lernwege, Arbeitsformen, Material, Methoden -->
+  <!-- I.4 Lernwege -->
   <div class="dimension">
     <div class="label">Lernwege, Arbeitsformen, Material, Methoden</div>
     <input class="slider" type="range" min="1" max="3" value="1">
@@ -109,7 +106,6 @@
       <div>Eigenständige Planung und Gestaltung.</div>
     </div>
   </div>
-
   <!-- II.1 Arbeitstempo -->
   <div class="dimension">
     <div class="label">Arbeitstempo</div>
@@ -120,7 +116,6 @@
       <div>Individuelles Arbeitstempo.</div>
     </div>
   </div>
-
   <!-- II.2 Lernschrittfolge -->
   <div class="dimension">
     <div class="label">Lernschrittfolge</div>
@@ -131,7 +126,6 @@
       <div>Schüler:innen legen Reihenfolge fest.</div>
     </div>
   </div>
-
   <!-- II.3 Zielfestlegung -->
   <div class="dimension">
     <div class="label">Zielfestlegung</div>
@@ -142,7 +136,6 @@
       <div>Eigenständige Formulierung individueller Ziele.</div>
     </div>
   </div>
-
   <!-- III.1 Meta-Lernen -->
   <div class="dimension">
     <div class="label">Meta-Lernen</div>
@@ -153,7 +146,6 @@
       <div>Fachbezogene Lernstrategien werden eingeübt und verwendet.</div>
     </div>
   </div>
-
   <!-- III.2 Feedbackprozesse -->
   <div class="dimension">
     <div class="label">Feedbackprozesse</div>
@@ -164,7 +156,6 @@
       <div>Feedbackprozesse frei wähl- und gestaltbar, primär formativ.</div>
     </div>
   </div>
-
   <!-- III.3 Beteiligung an Bewertung -->
   <div class="dimension">
     <div class="label">Beteiligung an Bewertung</div>
@@ -198,22 +189,21 @@
 
 <script>
 const sliders = Array.from(document.querySelectorAll('.slider'));
+// Reihenfolge exakt wie im HTML
 const labels = [
-  "Thema",
-  "Aufgabenstellung",
-  "Lernprodukte",
-  "Lernwege / Methoden / Material",
-  "Arbeitstempo",
-  "Lernschrittfolge",
-  "Zielfestlegung",
-  "Meta-Lernen",
-  "Feedbackprozesse",
-  "Beteiligung an Bewertung"
+  "Thema",                                       // I.1
+  "Aufgabenstellung",                            // I.2
+  "Lernprodukte",                                // I.3
+  "Lernwege, Arbeitsformen, Material, Methoden", // I.4
+  "Arbeitstempo",                                // II.1
+  "Lernschrittfolge",                            // II.2
+  "Zielfestlegung",                              // II.3
+  "Meta-Lernen",                                 // III.1
+  "Feedbackprozesse",                            // III.2
+  "Beteiligung an Bewertung"                     // III.3
 ];
-
-// Das Mapping ist 1:1 passend zur Reihenfolge der Schieberegler im HTML
+// Map ist 1:1, da die Reihenfolge der Schieberegler im HTML zu den Labels passt
 const map = [0,1,2,3,4,5,6,7,8,9];
-
 let values = map.map(() => 1);
 
 const ctx = document.getElementById('radarChart').getContext('2d');
@@ -224,12 +214,12 @@ const chart = new Chart(ctx, {
     datasets: [{
       data: values,
       borderColor: '#ffffff',
-      backgroundColor: 'rgba(197,40,40,0.35)', // Schraffur als halbtransparentes gefülltes Gebiet
+      backgroundColor: 'rgba(197,40,40,0.35)', // Schraffur: halbtransparente Füllung
       pointBackgroundColor: '#c52828',
       pointBorderColor: '#fff',
       pointRadius: 5,
       borderWidth: 2,
-      fill: true,
+      fill: true
     }]
   },
   options: {
@@ -242,11 +232,7 @@ const chart = new Chart(ctx, {
         ticks: { display: false },
         angleLines: { color: 'rgba(255,255,255,0.5)' },
         grid: { color: 'rgba(255,255,255,0.4)' },
-        pointLabels: {
-          color: '#fff',
-          font: { size: 12, weight: 'bold' },
-          padding: 10
-        }
+        pointLabels: { color: '#fff', font: { size: 12, weight: 'bold' }, padding: 10 }
       }
     }
   }
