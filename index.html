@@ -101,11 +101,9 @@
     margin-bottom: 24px;
   }
   canvas {
-    max-width: 520px;
-    max-height: 520px;
-    width: 520px;
-    height: 520px;
-  }
+  width: 800px;
+  height: 800px;
+}
   footer {
     text-align: center;
     font-size: 14px;
@@ -347,12 +345,16 @@ document.getElementById('btnReset').addEventListener('click', () => {
 
 document.getElementById('btnSave').addEventListener('click', () => {
   const exportCanvas = document.createElement('canvas');
-  exportCanvas.width = 1400;
-  exportCanvas.height = 1400;
+  exportCanvas.width = 2600;   // höhere Auflösung
+  exportCanvas.height = 2600;
   const xctx = exportCanvas.getContext('2d');
+
   xctx.fillStyle = '#167a72';
-  xctx.fillRect(0, 0, 1400, 1400);
-  xctx.drawImage(document.getElementById('radarChart'), 440, 440, 520, 520);
+  xctx.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
+
+  // Chart größer mittig setzen
+  xctx.drawImage(document.getElementById('radarChart'), 600, 600, 1400, 1400);
+
   const link = document.createElement('a');
   link.download = 'formatspinne-unterrichtsoeffnung.png';
   link.href = exportCanvas.toDataURL('image/png');
