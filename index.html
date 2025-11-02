@@ -327,7 +327,8 @@ function adjustValuesForArea(vals) {
   }
   return vals;
 }
-
+  
+const sliderToLabelIndex = [0, 4, 7, 1, 5, 8, 2, 6, 9, 3];
 sliders.forEach((sliderEl, i) => {
   sliderEl.addEventListener('input', () => {
     const targetIdx = sliderToLabelIndex[i];
