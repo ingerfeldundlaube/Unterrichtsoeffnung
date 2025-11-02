@@ -1,226 +1,234 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<title>Unterricht öffnen – Formativspinne</title>
+<meta charset="UTF-8" />
+<title>Unterricht öffnen – Schieberegler & Formatspinne</title>
 <style>
-    body{
-        font-family: Arial, sans-serif;
-        background:#1d7272;
-        color:#fff;
-        margin:0;
-        padding:0;
-        text-align:center;
-    }
+  body{
+    font-family: Arial, sans-serif;
+    margin:0; padding:0;
+    background:#167a72; color:#ffffff;
+    overflow-x:hidden;
+  }
+  .container{ max-width:1200px; margin:0 auto; padding:32px; }
+  .top-brand{text-align:right;font-weight:700;margin-bottom:10px;font-size:16px;white-space:nowrap;}
+  h1{text-align:center;font-size:34px;margin:0 0 8px;font-weight:700;}
+  h2{text-align:center;font-size:20px;margin:0 0 26px;font-weight:600;}
 
-    h1{margin-top:30px;font-size:32px;font-weight:700;}
-    h2{margin-bottom:30px;font-size:18px;font-weight:400;}
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+    background:rgba(255,255,255,0.08);
+    padding:28px;
+    border-radius:18px;
+  }
+  .col-header{font-size:18px;font-weight:700;margin-bottom:10px;text-align:center;}
+  .dimension{margin-bottom:16px;}
+  .label{font-weight:700;margin-bottom:4px;font-size:14px;}
 
-    .section-title{
-        margin-top:40px;
-        font-size:20px;
-        font-weight:700;
-    }
+  input[type=range]{width:100%;height:4px;background:#d9dede;border-radius:2px;outline:none;}
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;height:18px;width:18px;border-radius:50%;background:#c52828;border:2px solid #fff;cursor:pointer;
+  }
 
-    .slider-group{
-        max-width:900px;
-        margin:0 auto 35px auto;
-        display:flex;
-        flex-direction:column;
-        gap:14px;
-        text-align:left;
-    }
+  .desc{display:flex;justify-content:space-between;font-size:12px;margin-top:4px;}
+  .desc div{text-align:center;width:33%;}
 
-    .slider-label{
-        font-weight:700;
-        margin-bottom:4px;
-    }
+  .controls{display:flex;gap:12px;justify-content:center;margin:28px 0 12px;}
+  .btn{padding:10px 16px;border:none;border-radius:6px;font-weight:600;color:#fff;cursor:pointer;}
+  .btn-reset{background:#c52828;}
+  .btn-save{background:#295357;}
 
-    input[type=range]{
-        width:100%;
-    }
+  #radarCanvasWrap{
+    background:rgba(255,255,255,0.1);
+    padding:20px;border-radius:16px;
+    display:flex;justify-content:center;margin-bottom:12px;
+  }
+  canvas{max-width:520px;max-height:520px;width:520px;height:520px;}
 
-    button{
-        padding:10px 18px;
-        margin:10px;
-        border:none;
-        cursor:pointer;
-        border-radius:6px;
-        font-size:14px;
-        font-weight:700;
-    }
-    .reset{background:#d9534f;color:#fff;}
-    .save{background:#2f3e46;color:#fff;}
-
-    .chart-box{
-        width:650px;
-        height:650px;
-        margin:40px auto;
-    }
+  footer{text-align:center;font-size:14px;border-top:1px solid rgba(255,255,255,0.3);padding-top:10px;margin-top:24px;}
+  footer a{color:#fff;text-decoration:none;}
+  footer .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
-<h1>Formatspinne Unterrichtsöffnung</h1>
-
-<button class="reset">Alle Regler zurücksetzen</button>
-<button class="save">Spinne herunterladen</button>
-
+<div class="container">
+<div class="top-brand">Ingerfeld + Laube</div>
+<h1>Wie lässt sich Unterricht öffnen?</h1>
 <h2>Mit dem Schieberegler Dimensionen der Unterrichtsöffnung reflektieren</h2>
 
-<div class="section-title">I. Inhaltlich-didaktische sowie methodische Öffnung</div>
-<div class="slider-group">
-    <div>
-        <div class="slider-label">Thema</div>
-        <input type="range" min="1" max="3" value="1" class="slider"
-         data-option1="Vorgegeben"
-         data-option2="Vorgegeben mit Wahlmöglichkeiten"
-         data-option3="Selbst wählbar im Rahmen">
+<div class="grid">
+  <div class="col-header">I. Inhaltlich-didaktische sowie methodische Öffnung</div>
+  <div class="col-header">II. Prozessuale Öffnung</div>
+  <div class="col-header">III. Bewertungsbezogene Öffnung</div>
+
+  <!-- Thema -->
+  <div class="dimension">
+    <div class="label">Thema</div>
+    <input class="slider" type="range" min="1" max="3" value="1">
+    <div class="desc">
+      <div>Vorgegeben.</div>
+      <div>Vorgegeben mit Wahlmöglichkeiten.</div>
+      <div>Selbst wählbar im Rahmen.</div>
     </div>
-    <div>
-        <div class="slider-label">Aufgabenstellung</div>
-        <input type="range" min="1" max="3" value="1" class="slider"
-         data-option1="Eine richtige Lösung"
-         data-option2="Mehrere Lösungen"
-         data-option3="Selbstständige Problemlösung">
+  </div>
+
+  <!-- Arbeitstempo -->
+  <div class="dimension">
+    <div class="label">Arbeitstempo</div>
+    <input class="slider" type="range" min="1" max="3" value="1">
+    <div class="desc">
+      <div>Einheitlich.</div>
+      <div>Teilweise individuell.</div>
+      <div>Individuell.</div>
     </div>
-    <div>
-        <div class="slider-label">Lernwege / Methoden / Material</div>
-        <input type="range" min="1" max="3" value="1" class="slider"
-         data-option1="Vorgegeben"
-         data-option2="Auswahl möglich"
-         data-option3="Eigenständig wählbar">
+  </div>
+
+  <!-- Meta-Lernen -->
+  <div class="dimension">
+    <div class="label">Meta-Lernen</div>
+    <input class="slider" type="range" min="1" max="3" value="1">
+    <div class="desc">
+      <div>Thematisiert.</div>
+      <div>Reflektiert.</div>
+      <div>Eingeübt & verwendet.</div>
     </div>
+  </div>
+
+  <!-- Aufgabenstellung -->
+  <div class="dimension">
+    <div class="label">Aufgabenstellung</div>
+    <input class="slider" type="range" min="1" max="3" value="1">
+    <div class="desc">
+      <div>Eine richtige Lösung.</div>
+      <div>Mehrere Lösungen.</div>
+      <div>Selbstständige Problemfindung.</div>
+    </div>
+  </div>
+
+  <!-- Lernschrittfolge -->
+  <div class="dimension">
+    <div class="label">Lernschrittfolge</div>
+    <input class="slider" type="range" min="1" max="3" value="1">
+    <div class="desc">
+      <div>Reihenfolge Lehrkraft.</div>
+      <div>Gemeinsam festgelegt.</div>
+      <div>Schüler:innen wählen.</div>
+    </div>
+  </div>
+
+  <!-- Feedbackprozesse -->
+  <div class="dimension">
+    <div class="label">Feedbackprozesse</div>
+    <input class="slider" type="range" min="1" max="3" value="1">
+    <div class="desc">
+      <div>Lehrkraft.</div>
+      <div>Peer/Lehrkraft/Selbst.</div>
+      <div>Selbstbestimmt, formativ.</div>
+    </div>
+  </div>
+
+  <!-- Lernwege / Methoden / Material -->
+  <div class="dimension">
+    <div class="label">Lernwege / Methoden / Material</div>
+    <input class="slider" type="range" min="1" max="3" value="1">
+    <div class="desc">
+      <div>Vorgegeben.</div>
+      <div>Auswahl.</div>
+      <div>Eigenständig.</div>
+    </div>
+  </div>
+
+  <!-- Zielfestlegung -->
+  <div class="dimension">
+    <div class="label">Zielfestlegung</div>
+    <input class="slider" type="range" min="1" max="3" value="1">
+    <div class="desc">
+      <div>Lehrkraft.</div>
+      <div>Mitbestimmung.</div>
+      <div>Eigenständige Ziele.</div>
+    </div>
+  </div>
+
+  <!-- Beteiligung an Bewertung -->
+  <div class="dimension">
+    <div class="label">Beteiligung an Bewertung</div>
+    <input class="slider" type="range" min="1" max="3" value="1">
+    <div class="desc">
+      <div>Kriterien vorgegeben.</div>
+      <div>Mitbestimmung.</div>
+      <div>Gemeinsam entwickelt.</div>
+    </div>
+  </div>
 </div>
 
-<div class="section-title">II. Prozessuale Öffnung</div>
-<div class="slider-group">
-    <div>
-        <div class="slider-label">Arbeitstempo</div>
-        <input type="range" min="1" max="3" value="1" class="slider"
-         data-option1="Einheitlich"
-         data-option2="Teilweise individuell"
-         data-option3="Individuell">
-    </div>
-
-    <div>
-        <div class="slider-label">Lernschrittfolge</div>
-        <input type="range" min="1" max="3" value="1" class="slider"
-         data-option1="Reihenfolge von Lehrkraft festgelegt"
-         data-option2="Gemeinsam festgelegt"
-         data-option3="Schüler*innen wählen Reihenfolge">
-    </div>
-
-    <div>
-        <div class="slider-label">Zielfestlegung</div>
-        <input type="range" min="1" max="3" value="1" class="slider"
-         data-option1="Ziele durch Lehrkraft"
-         data-option2="Mitbestimmung"
-         data-option3="Eigenständige Ziele">
-    </div>
+<h2>Formatspinne Unterrichtsöffnung</h2>
+<div class="controls">
+  <button id="btnReset" class="btn btn-reset">Alle Regler zurücksetzen</button>
+  <button id="btnSave" class="btn btn-save">Spinne herunterladen</button>
 </div>
 
-<div class="section-title">III. Bewertungsbezogene Öffnung</div>
-<div class="slider-group">
-    <div>
-        <div class="slider-label">Meta-Lernen</div>
-        <input type="range" min="1" max="3" value="1" class="slider"
-         data-option1="Themenbezogen"
-         data-option2="Reflektiert"
-         data-option3="Eingeübt & verwendet">
-    </div>
-
-    <div>
-        <div class="slider-label">Feedbackprozesse</div>
-        <input type="range" min="1" max="3" value="1" class="slider"
-         data-option1="Lehrkraft"
-         data-option2="Peer / Lehrkraft / Selbst"
-         data-option3="Selbstbestimmt, formativ">
-    </div>
-
-    <div>
-        <div class="slider-label">Beteiligung an Bewertung</div>
-        <input type="range" min="1" max="3" value="1" class="slider"
-         data-option1="Vorgegeben"
-         data-option2="Mitbestimmung"
-         data-option3="Gemeinsam entwickelt">
-    </div>
+<div id="radarCanvasWrap">
+  <canvas id="radarChart" width="520" height="520"></canvas>
 </div>
 
-<div class="chart-box">
-    <canvas id="radarChart" width="600" height="600"></canvas>
+<footer>
+  <div class="row">
+    <strong>Ingerfeld + Laube</strong>
+    • <a href="https://www.ingerfeldundlaube.de" target="_blank">www.ingerfeldundlaube.de</a>
+    • Instagram:<a href="https://instagram.com/ingerfeldundlaube" target="_blank">@ingerfeldundlaube</a>
+  </div>
+</footer>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-const sliders = document.querySelectorAll('.slider');
-const labels = [
-"Thema","Aufgabenstellung","Lernwege / Methoden / Material",
-"Arbeitstempo","Lernschrittfolge","Zielfestlegung",
-"Meta-Lernen","Feedbackprozesse","Beteiligung an Bewertung"
-];
+const sliders = Array.from(document.querySelectorAll('.slider'));
+const labels = ["Thema","Arbeitstempo","Meta-Lernen","Aufgabenstellung","Lernschrittfolge","Feedbackprozesse","Lernwege / Methoden / Material","Zielfestlegung","Beteiligung an Bewertung"];
+let values = new Array(labels.length).fill(1);
 
-const ctx = document.getElementById("radarChart");
+const ctx = document.getElementById('radarChart').getContext('2d');
 const chart = new Chart(ctx,{
-type:'radar',
-data:{
-labels: labels,
-datasets:[{
-label:"Öffnungsgrad",
-data: slidersToValues(),
-backgroundColor:"rgba(255,255,255,0.1)",
-borderColor:"#ffffff",
-pointBackgroundColor:"red",
-pointBorderColor:"#ffffff",
-pointRadius:5,
-borderWidth:2
-}]
-},
-options:{
-responsive:false,
-plugins:{legend:{display:false}},
-scales:{
-r:{
-beginAtZero:true,
-min:0,max:3,
-grid:{color:"rgba(255,255,255,0.4)"},
-pointLabels:{color:"#fff",font:{size:14}},
-ticks:{display:false}
-}
-},
-layout:{padding:30}
-}
+  type:'radar',
+  data:{labels:labels,datasets:[{
+    data:values,
+    borderColor:'#fff',
+    backgroundColor:'rgba(255,255,255,0.10)',
+    pointBackgroundColor:'#c52828',
+    pointBorderColor:'#fff',
+    pointRadius:5, borderWidth:2
+  }]},
+  options:{
+    layout:{padding:{top:40,bottom:40,left:40,right:40}},
+    plugins:{legend:{display:false}},
+    scales:{
+      r:{
+        min:0,max:3,ticks:{display:false},
+        angleLines:{color:'rgba(255,255,255,0.6)'},
+        grid:{color:'rgba(255,255,255,0.6)'},
+        pointLabels:{color:'#fff',font:{size:14,weight:'bold'}}
+      }
+    }
+  }
 });
 
-function slidersToValues(){
- return Array.from(sliders).map(s=>Number(s.value));
-}
-
-sliders.forEach(slider=>{
- slider.oninput = ()=>{
-     chart.data.datasets[0].data = slidersToValues();
-     chart.update();
- };
+sliders.forEach((s,i)=>{
+  s.addEventListener('input',()=>{
+    values[i] = parseInt(s.value);
+    chart.data.datasets[0].data = values;
+    chart.update();
+  });
 });
 
-// Reset
-document.querySelector(".reset").onclick = ()=>{
- sliders.forEach(s=>s.value=1);
- chart.data.datasets[0].data = slidersToValues();
- chart.update();
-};
+document.getElementById('btnReset').addEventListener('click',()=>{
+  values.fill(1);
+  sliders.forEach(s=>s.value=1);
+  chart.data.datasets[0].data = values;
+  chart.update();
+});
 
-// SAVE PNG
-document.querySelector(".save").onclick = ()=>{
- const canvas = document.getElementById("radarChart");
- const link = document.createElement("a");
- canvas.toBlob(function(blob){
-     link.href = URL.createObjectURL(blob);
-     link.download = "formatspinne-unterrichtoeffnung.png";
-     link.click();
-     URL.revokeObjectURL(link.href);
- });
-};
-</script>
-</body>
-</html>
+/*
+ Download PNG
+*/
+document.getElementById('btnSave').addEventListener('click',()=>{
