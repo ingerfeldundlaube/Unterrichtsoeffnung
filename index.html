@@ -2,59 +2,44 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8" />
-<title>Unterricht öffnen – Schieberegler & Formatspinne</title>
+<title>Formatspinne Unterrichtsöffnung – Schieberegler</title>
 <style>
-  body{
+  body {
     font-family: Arial, sans-serif;
     margin:0; padding:0;
     background:#167a72; color:#ffffff;
   }
-  .container{ max-width:1200px; margin:0 auto; padding:32px; }
-  .top-brand{text-align:right;font-weight:700;margin-bottom:10px;font-size:16px;white-space:nowrap;}
-  h1{text-align:center;font-size:34px;margin:0 0 8px;font-weight:700;}
-  h2{text-align:center;font-size:20px;margin:0 0 26px;font-weight:600;}
+  .container { max-width:1200px; margin:0 auto; padding:32px; }
+  .top-brand {text-align:right; font-weight:700; margin-bottom:10px; font-size:16px; white-space:nowrap;}
+  h1 {text-align:center; font-size:34px; margin:0 0 8px; font-weight:700;}
+  h2 {text-align:center; font-size:20px; margin:0 0 26px; font-weight:600;}
 
-  .grid-blocks{
-    display: flex;
-    gap: 24px;
-    justify-content: center;
-    margin-bottom: 28px;
+  .blocks { display: flex; gap: 28px; justify-content:center; margin-bottom:28px; }
+  .block { background: rgba(255,255,255,0.12); border-radius: 18px; padding: 18px; min-width: 320px; flex: 1 1 0; }
+  .block-header { font-size:18px; font-weight:700; margin-bottom:10px; text-align:center; }
+  .dimension { margin-bottom:22px; }
+  .label { font-weight:700; margin-bottom:4px; font-size:15px; }
+
+  input[type=range] { width:100%; height:4px; background:#d9dede; border-radius:2px; outline:none; }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance:none; height:18px; width:18px; border-radius:50%;
+    background:#c52828; border:2px solid #fff; cursor:pointer;
   }
-  .block{
-    background: rgba(255,255,255,0.12);
-    border-radius: 18px;
-    padding: 18px;
-    min-width: 320px;
-    flex: 1 1 0;
-  }
-  .block-header{font-size:18px;font-weight:700;margin-bottom:10px;text-align:center;}
-  .dimension{margin-bottom:22px;}
-  .label{font-weight:700;margin-bottom:4px;font-size:15px;}
+  .desc { display:flex; justify-content:space-between; font-size:13px; margin-top:6px; }
+  .desc div { text-align:center; width:33%; padding:0 4px; }
 
-  input[type=range]{width:100%;height:4px;background:#d9dede;border-radius:2px;outline:none;}
-  input[type=range]::-webkit-slider-thumb{
-    -webkit-appearance:none;height:18px;width:18px;border-radius:50%;
-    background:#c52828;border:2px solid #fff;cursor:pointer;
-  }
+  .controls { display:flex; gap:12px; justify-content:center; margin:28px 0 12px; }
+  .btn { padding:10px 16px; border:none; border-radius:6px; font-weight:600; color:#fff; cursor:pointer; }
+  .btn-reset { background:#c52828; }
+  .btn-save { background:#295357; }
 
-  .desc{display:flex;justify-content:space-between;font-size:13px;margin-top:6px;}
-  .desc div{text-align:center;width:33%;padding:0 4px;}
+  #radarCanvasWrap { background:rgba(255,255,255,0.15); padding:24px; border-radius:16px;
+    display:flex; justify-content:center; margin-bottom:12px; }
+  canvas { max-width:520px; max-height:520px; width:520px; height:520px; }
 
-  .controls{display:flex;gap:12px;justify-content:center;margin:28px 0 12px;}
-  .btn{padding:10px 16px;border:none;border-radius:6px;font-weight:600;color:#fff;cursor:pointer;}
-  .btn-reset{background:#c52828;}
-  .btn-save{background:#295357;}
-
-  #radarCanvasWrap{
-    background:rgba(255,255,255,0.15);
-    padding:24px;border-radius:16px;
-    display:flex;justify-content:center;margin-bottom:12px;
-  }
-  canvas{max-width:520px;max-height:520px;width:520px;height:520px;}
-
-  footer{text-align:center;font-size:14px;border-top:1px solid rgba(255,255,255,0.3);padding-top:10px;margin-top:24px;}
-  footer a{color:#fff;text-decoration:none;}
-  footer .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  footer { text-align:center; font-size:14px; border-top:1px solid rgba(255,255,255,0.3); padding-top:10px; margin-top:24px;}
+  footer a { color:#fff; text-decoration:none; }
+  footer .row { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -63,19 +48,18 @@
 
 <div class="top-brand">Ingerfeld + Laube</div>
 <h1>Wie lässt sich Unterricht öffnen?</h1>
-<h2>Mit dem Schieberegler Dimensionen der Unterrichtsöffnung reflektieren</h2>
+<h2>Dimensionen der Unterrichtsöffnung mit Schiebereglern reflektieren</h2>
 
-<div class="grid-blocks">
-  <!-- Block I -->
+<div class="blocks">
   <div class="block">
     <div class="block-header">I. Inhaltlich-didaktische sowie methodische Öffnung</div>
     <div class="dimension">
       <div class="label">Thema</div>
       <input class="slider" type="range" min="1" max="3" value="1">
       <div class="desc">
-        <div>Vollständig vorgegeben und festgelegt.</div>
-        <div>Wahlmöglichkeiten bei Ausgestaltung.</div>
-        <div>Selbstwählbar im Rahmen.</div>
+        <div>Vollständig vorgegeben.</div>
+        <div>Wahlmöglichkeiten.</div>
+        <div>Selbstwählbar.</div>
       </div>
     </div>
     <div class="dimension">
@@ -106,7 +90,6 @@
       </div>
     </div>
   </div>
-  <!-- Block II -->
   <div class="block">
     <div class="block-header">II. Prozessuale Öffnung</div>
     <div class="dimension">
@@ -137,7 +120,6 @@
       </div>
     </div>
   </div>
-  <!-- Block III -->
   <div class="block">
     <div class="block-header">III. Bewertungsbezogene Öffnung</div>
     <div class="dimension">
@@ -192,7 +174,6 @@
 <script>
 const sliders = Array.from(document.querySelectorAll('.slider'));
 const labels = [
-  // Reihenfolge exakt wie in den Blöcken I.1-4, II.1-3, III.1-3
   "Thema",                        // I.1
   "Aufgabenstellung",             // I.2
   "Lernprodukte",                 // I.3
@@ -204,7 +185,7 @@ const labels = [
   "Feedbackprozesse",             // III.2
   "Beteiligung an Bewertung"      // III.3
 ];
-// Map ist 1:1, da die Reihenfolge der Inputs im HTML zur Labelreihenfolge passt!
+// Die Regler im HTML UND die Chart-Labels sind jetzt in exakt dieser Reihenfolge!
 let values = labels.map(() => 1);
 
 const ctx = document.getElementById('radarChart').getContext('2d');
@@ -215,12 +196,12 @@ const chart = new Chart(ctx, {
     datasets: [{
       data: values,
       borderColor: '#fff',
-      backgroundColor: 'rgba(197,40,40,0.35)', // Schraffur: halbtransparente Füllung
+      backgroundColor: 'rgba(197,40,40,0.35)', // Schraffur/Fläche halbtransparent gefüllt
       pointBackgroundColor: '#c52828',
       pointBorderColor: '#fff',
       pointRadius: 5,
       borderWidth: 2,
-      fill: true,
+      fill: true // <<<<<<< Die Fläche zwischen den Punkten wird ausgefüllt!
     }]
   },
   options: {
