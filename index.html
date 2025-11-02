@@ -345,15 +345,19 @@ document.getElementById('btnReset').addEventListener('click', () => {
 
 document.getElementById('btnSave').addEventListener('click', () => {
   const exportCanvas = document.createElement('canvas');
-  exportCanvas.width = 2600;   // höhere Auflösung
-  exportCanvas.height = 2600;
+
+  // etwas kleineres Gesamtbild
+  exportCanvas.width = 1600;
+  exportCanvas.height = 1600;
+
   const xctx = exportCanvas.getContext('2d');
 
+  // Hintergrundfarbe
   xctx.fillStyle = '#167a72';
   xctx.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
 
-  // Chart größer mittig setzen
-  xctx.drawImage(document.getElementById('radarChart'), 600, 600, 1400, 1400);
+  // Radar größer skaliert und zentriert einfügen
+  xctx.drawImage(document.getElementById('radarChart'), 300, 300, 1000, 1000);
 
   const link = document.createElement('a');
   link.download = 'formatspinne-unterrichtsoeffnung.png';
