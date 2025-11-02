@@ -226,11 +226,26 @@ btnReset.addEventListener('click',()=>{
 });
 
 /* ✅ Download als PNG für Apple & Windows */
-btnSave.addEventListener('click',()=>{
-  const canvas = document.getElementById('radarChart');
-  const link = document.createElement('a');
-  canvas.toBlob(function(blob){
+/* PNG Export mit weißem Hintergrund */
+btnSave.addEventListener('click', () => {
+  const chartCanvas = document.getElementById('radarChart');
+
+  // Neues Canvas mit weißem Hintergrund
+  const exportCanvas = document.createElement('canvas');
+  exportCanvas.width = chartCanvas.width;
+  exportCanvas.height = chartCanvas.height;
+  const ctx = exportCanvas.getContext('2d');
+
+  // Weißer Hintergrund
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
+
+  // Chart auf das neue Canvas kopieren
+  ctx.drawImage(chartCanvas, 0, 0);
+
+  exportCanvas.toBlob(function(blob){
     const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
     link.href = url;
     link.download = 'formatspinne-unterrichtsoeffnung.png';
     link.click();
