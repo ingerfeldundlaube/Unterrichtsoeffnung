@@ -226,11 +226,11 @@ btnReset.addEventListener('click',()=>{
 });
 
 /* ✅ Download als PNG für Apple & Windows */
-/* PNG Export mit weißem Hintergrund */
-btnSave.addEventListener('click', () => {
+/* PNG Export mit weißem Hintergrund & Chart.js Fix */
+btnSave.addEventListener('click', ()=>{
   const chartCanvas = document.getElementById('radarChart');
 
-  // Neues Canvas mit weißem Hintergrund
+  // Neues Canvas vorbereiten
   const exportCanvas = document.createElement('canvas');
   exportCanvas.width = chartCanvas.width;
   exportCanvas.height = chartCanvas.height;
@@ -240,17 +240,18 @@ btnSave.addEventListener('click', () => {
   ctx.fillStyle = '#ffffff';
   ctx.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
 
-  // Chart auf das neue Canvas kopieren
-  ctx.drawImage(chartCanvas, 0, 0);
+  // Warte kurz, damit Chart.js vollständig gerendert ist
+  requestAnimationFrame(() => {
+    ctx.drawImage(chartCanvas, 0, 0);
 
-  exportCanvas.toBlob(function(blob){
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'formatspinne-unterrichtsoeffnung.png';
-    link.click();
-    URL.revokeObjectURL(url);
-  }, 'image/png');
+    exportCanvas.toBlob((blob)=>{
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'formatspinne-unterrichtsoeffnung.png';
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }, 'image/png');
+  });
 });
 </script>
 
