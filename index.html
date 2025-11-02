@@ -262,13 +262,27 @@ document.getElementById('btnReset').addEventListener('click',()=>{
 });
 
 document.getElementById('btnSave').addEventListener('click', () => {
+  // Hintergrund hinzufügen, damit Export nicht weiß wird
+  const canvas = document.getElementById('radarChart');
+  const ctx = canvas.getContext('2d');
+
+  // Temporären Hintergrund zeichnen
+  ctx.save();
+  ctx.globalCompositeOperation = 'destination-over';
+  ctx.fillStyle = '#167a72'; // Deine Hintergrundfarbe
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Mini-Verzögerung, damit Chart fertig ist
   setTimeout(() => {
-    const url = chart.toBase64Image('image/png', 1.0);
-    const link=document.createElement('a');
-    link.href=url;
-    link.download='formatspinne-unterrichtsoeffnung.png';
+    const url = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'formatspinne-unterrichtsoeffnung.png';
     link.click();
-  }, 200);
+
+    // Canvas wieder zurücksetzen
+    ctx.restore();
+  }, 150);
 });
 </script>
 
