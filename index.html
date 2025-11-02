@@ -219,25 +219,33 @@ let values = map.map(() => 1);
 const ctx = document.getElementById('radarChart').getContext('2d');
 const chart = new Chart(ctx,{
   type:'radar',
-  data:{labels:labels,datasets:[{
-    data:values,
-    borderColor:'#ffffff',
-    backgroundColor:'rgba(197,40,40,0.35)', /* kräftig schraffiert/gefüllt */
-    pointBackgroundColor:'#c52828',
-    pointBorderColor:'#fff',
-    pointRadius:5, borderWidth:2,
-    fill:true,
-  }]},
+  data:{
+    labels:labels,
+    datasets:[{
+      data:values,
+      borderColor:'#ffffff',
+      backgroundColor:'rgba(197,40,40,0.35)', /* kräftig schraffiert/gefüllt */
+      pointBackgroundColor:'#c52828',
+      pointBorderColor:'#fff',
+      pointRadius:5, borderWidth:2,
+      fill:true,
+    }]
+  },
   options:{
-    layout:{padding:{top:30,bottom:30,left:30,right:30}},
+    layout:{padding:{top:50,bottom:50,left:50,right:50}},
     plugins:{legend:{display:false}},
     scales:{
       r:{
-        min:0,max:3,
+        min:1,
+        max:3,
         ticks:{display:false},
         angleLines:{color:'rgba(255,255,255,0.5)'},
         grid:{color:'rgba(255,255,255,0.4)'},
-        pointLabels:{color:'#fff',font:{size:14,weight:'bold'},padding:6}
+        pointLabels:{
+          color:'#fff',
+          font:{size:12,weight:'bold'},
+          padding:10
+        }
       }
     }
   }
