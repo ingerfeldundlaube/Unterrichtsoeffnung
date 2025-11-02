@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8" />
-<title>Unterricht öffnen – Schieberegler & Formatspinne</title>
+<title>Formatspinne Unterrichtsöffnung – Schieberegler</title>
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -117,7 +117,6 @@
   <div class="blocks">
     <div class="block">
       <div class="block-header">I. Inhaltlich-didaktische sowie methodische Öffnung</div>
-
       <div class="dimension">
         <div class="label">Thema</div>
         <input class="slider" type="range" min="1" max="3" value="1">
@@ -127,7 +126,6 @@
           <div>Selbstwählbar innerhalb eines Rahmens.</div>
         </div>
       </div>
-
       <div class="dimension">
         <div class="label">Aufgabenstellung</div>
         <input class="slider" type="range" min="1" max="3" value="1">
@@ -137,7 +135,6 @@
           <div>Komplexe Aufgaben mit selbständiger Problemfindung und -lösung.</div>
         </div>
       </div>
-
       <div class="dimension">
         <div class="label">Lernprodukte</div>
         <input class="slider" type="range" min="1" max="3" value="1">
@@ -147,7 +144,6 @@
           <div>Freie Wahl von Produktform und Darstellung.</div>
         </div>
       </div>
-
       <div class="dimension">
         <div class="label">Lernwege, Arbeitsformen, Material, Methoden</div>
         <input class="slider" type="range" min="1" max="3" value="1">
@@ -157,12 +153,10 @@
           <div>Eigenständige Planung und Gestaltung.</div>
         </div>
       </div>
-
     </div>
 
     <div class="block">
       <div class="block-header">II. Prozessuale Öffnung</div>
-
       <div class="dimension">
         <div class="label">Arbeitstempo</div>
         <input class="slider" type="range" min="1" max="3" value="1">
@@ -172,7 +166,6 @@
           <div>Individuelles Arbeitstempo.</div>
         </div>
       </div>
-
       <div class="dimension">
         <div class="label">Lernschrittfolge</div>
         <input class="slider" type="range" min="1" max="3" value="1">
@@ -182,7 +175,6 @@
           <div>Schüler:innen legen Reihenfolge fest.</div>
         </div>
       </div>
-
       <div class="dimension">
         <div class="label">Zielfestlegung</div>
         <input class="slider" type="range" min="1" max="3" value="1">
@@ -192,12 +184,10 @@
           <div>Eigenständige Formulierung individueller Ziele.</div>
         </div>
       </div>
-
     </div>
 
     <div class="block">
       <div class="block-header">III. Bewertungsbezogene Öffnung</div>
-
       <div class="dimension">
         <div class="label">Meta-Lernen</div>
         <input class="slider" type="range" min="1" max="3" value="1">
@@ -207,7 +197,6 @@
           <div>Fachbezogene Lernstrategien werden eingeübt und verwendet.</div>
         </div>
       </div>
-
       <div class="dimension">
         <div class="label">Feedbackprozesse</div>
         <input class="slider" type="range" min="1" max="3" value="1">
@@ -217,7 +206,6 @@
           <div>Feedbackprozesse frei wähl- und gestaltbar, primär formativ.</div>
         </div>
       </div>
-
       <div class="dimension">
         <div class="label">Beteiligung an Bewertung</div>
         <input class="slider" type="range" min="1" max="3" value="1">
@@ -227,7 +215,6 @@
           <div>Gemeinsame Entwicklung und Anwendung von Bewertungskriterien.</div>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -248,29 +235,30 @@
       Instagram: <a href="https://instagram.com/ingerfeldundlaube" target="_blank">@ingerfeldundlaube</a>
     </div>
   </footer>
-
 </div>
 
 <script>
 const sliders = Array.from(document.querySelectorAll('.slider'));
 const labels = [
   "Thema",
-  "Aufgabenstellung",
+  "Aufgaben-\nstellung",
   "Lernprodukte",
-  "Lernwege, Arbeitsformen, Material, Methoden",
+  "Lernwege, Arbeitsformen,\nMaterial, Methoden",
   "Arbeitstempo",
-  "Lernschrittfolge",
+  "Lern-\nschrittfolge",
   "Zielfestlegung",
-  "Meta-Lernen",
-  "Feedbackprozesse",
-  "Beteiligung an Bewertung"
+  "Meta-\nLernen",
+  "Feedback-\nprozesse",
+  "Beteiligung an\nBewertung"
 ];
 
-// Basiswerte für unaufgezogene Flächen (leicht ausgegraut)
-const baseValues = labels.map(() => 1.3); // Kann sachte hellgrau Fläche erzeugen
+// Basiswerte für ausgegraute Grundfläche
+const baseValues = labels.map(() => 1.3);
 
+// Die aktuelle Werte (geändert per Slider)
 let values = labels.map(() => 1);
 
+// Chart-Setup
 const ctx = document.getElementById('radarChart').getContext('2d');
 const chart = new Chart(ctx, {
   type: 'radar',
@@ -296,7 +284,7 @@ const chart = new Chart(ctx, {
         pointRadius: 5,
         borderWidth: 2,
         fill: true,
-      },
+      }
     ]
   },
   options: {
@@ -315,10 +303,24 @@ const chart = new Chart(ctx, {
   }
 });
 
+// Eventlistener für Slider, inkl. Bereichserweiterung bei einem Wert
+function adjustValuesForArea(vals) {
+  const countAboveOne = vals.filter(v => v > 1).length;
+  if (countAboveOne === 1) {
+    const idx = vals.findIndex(v => v > 1);
+    const nextIdx = (idx + 1) % vals.length;
+    if (vals[nextIdx] === 1) {
+      vals[nextIdx] = vals[idx];
+    }
+  }
+  return vals;
+}
+
 sliders.forEach((sliderEl, i) => {
   sliderEl.addEventListener('input', () => {
     values[i] = parseInt(sliderEl.value);
-    chart.data.datasets[1].data = values; // Dataset 1 = Aktuelle Werte
+    const adjustedValues = adjustValuesForArea([...values]);
+    chart.data.datasets[1].data = adjustedValues; // zweite Dataset = aktuelle Werte
     chart.update();
   });
 });
