@@ -32,28 +32,25 @@
     font-size: 20px; margin: 0 0 26px; font-weight: 600;
   }
 
- /* Grid: exakt 3 Spalten, getrennte Zeilen-/Spaltenabstände */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 28px;
-  row-gap: 16px;   /* kleiner, damit keine großen Lücken entstehen */
-  margin-top: 12px; /* moderater Abstand nach den Hauptüberschriften */
-}
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 28px;
+    row-gap: 16px;
+    margin-top: 12px;
+  }
 
-/* Spaltentitel: nicht über volle Breite spannen */
-.grid-title {
-  font-weight: 800;
-  font-size: 20px;
-  text-align: center;
-  color: #ffffff;
-  margin: 0 0 6px 0;  /* kleine, einheitliche Abstände */
-}
+  .grid-title {
+    font-weight: 800;
+    font-size: 22px;
+    text-align: center;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+  }
 
-/* Titel explizit in Spalte 1, 2, 3 platzieren */
-.grid-title:nth-of-type(1) { grid-column: 1; }
-.grid-title:nth-of-type(2) { grid-column: 2; }
-.grid-title:nth-of-type(3) { grid-column: 3; }
+  .grid-title:nth-of-type(1) { grid-column: 1; }
+  .grid-title:nth-of-type(2) { grid-column: 2; }
+  .grid-title:nth-of-type(3) { grid-column: 3; }
 
   .grid-item {
     background: rgba(255, 255, 255, 0.12);
@@ -136,10 +133,10 @@
   }
 
   canvas {
-    max-width: 520px;
-    max-height: 520px;
-    width: 520px;
-    height: 520px;
+    max-width: 600px;
+    max-height: 600px;
+    width: 600px;
+    height: 600px;
   }
 
   footer {
@@ -169,18 +166,16 @@
 <h1>Wie lässt sich Unterricht öffnen?</h1>
 <h2>Dimensionen der Unterrichtsöffnung mit Schiebereglern reflektieren</h2>
 
-<!-- GRID START -->
+<!-- GRID -->
 <div class="grid">
 
-  <!-- Spaltenüberschriften -->
   <div class="grid-title">I. Inhaltlich-didaktische sowie methodische Öffnung</div>
   <div class="grid-title">II. Prozessuale Öffnung</div>
   <div class="grid-title">III. Bewertungsbezogene Öffnung</div>
 
-  <!-- Reihe 1 -->
   <div class="grid-item">
     <div class="dimension-label">Thema</div>
-    <input class="slider" type="range" min="1" max="3" value="1">
+    <input class="slider" type="range" min="1" max="3" value="1" />
     <div class="desc">
       <div>Vollständig vorgegeben und festgelegt.</div>
       <div>Vorgegeben mit Wahlmöglichkeiten in der Ausgestaltung.</div>
@@ -190,7 +185,7 @@
 
   <div class="grid-item">
     <div class="dimension-label">Arbeitstempo</div>
-    <input class="slider" type="range" min="1" max="3" value="1">
+    <input class="slider" type="range" min="1" max="3" value="1" />
     <div class="desc">
       <div>Einheitliches Tempo für alle.</div>
       <div>Teilweise individuelles Tempo.</div>
@@ -200,7 +195,7 @@
 
   <div class="grid-item">
     <div class="dimension-label">Meta-Lernen</div>
-    <input class="slider" type="range" min="1" max="3" value="1">
+    <input class="slider" type="range" min="1" max="3" value="1" />
     <div class="desc">
       <div>Fachbezogene Lernstrategien werden thematisiert.</div>
       <div>Fachbezogene Lernstrategien werden reflektiert.</div>
@@ -208,10 +203,9 @@
     </div>
   </div>
 
-  <!-- Reihe 2 -->
   <div class="grid-item">
     <div class="dimension-label">Aufgabenstellung</div>
-    <input class="slider" type="range" min="1" max="3" value="1">
+    <input class="slider" type="range" min="1" max="3" value="1" />
     <div class="desc">
       <div>Aufgaben mit einer richtigen Lösung.</div>
       <div>Aufgaben mit mehreren möglichen Lösungen.</div>
@@ -221,7 +215,7 @@
 
   <div class="grid-item">
     <div class="dimension-label">Lernschrittfolge</div>
-    <input class="slider" type="range" min="1" max="3" value="1">
+    <input class="slider" type="range" min="1" max="3" value="1" />
     <div class="desc">
       <div>Reihenfolge von Lehrkraft festgelegt.</div>
       <div>Reihenfolge gemeinsam festgelegt.</div>
@@ -231,7 +225,7 @@
 
   <div class="grid-item">
     <div class="dimension-label">Feedbackprozesse</div>
-    <input class="slider" type="range" min="1" max="3" value="1">
+    <input class="slider" type="range" min="1" max="3" value="1" />
     <div class="desc">
       <div>Feedback durch Lehrkraft, in der Regel summativ.</div>
       <div>Peer-, Lehrkraft- und Selbstfeedback in vorgegebenen Strukturen, auch formativ.</div>
@@ -239,10 +233,9 @@
     </div>
   </div>
 
-  <!-- Reihe 3 -->
   <div class="grid-item">
     <div class="dimension-label">Lernprodukte</div>
-    <input class="slider" type="range" min="1" max="3" value="1">
+    <input class="slider" type="range" min="1" max="3" value="1" />
     <div class="desc">
       <div>Einheitliche Produktform vorgegeben.</div>
       <div>Wahl zwischen Produktformaten möglich.</div>
@@ -252,7 +245,7 @@
 
   <div class="grid-item">
     <div class="dimension-label">Zielfestlegung</div>
-    <input class="slider" type="range" min="1" max="3" value="1">
+    <input class="slider" type="range" min="1" max="3" value="1" />
     <div class="desc">
       <div>Lernziele ausschließlich durch Lehrkraft definiert.</div>
       <div>Mitbestimmung der Ziele.</div>
@@ -262,7 +255,7 @@
 
   <div class="grid-item">
     <div class="dimension-label">Beteiligung an Bewertung</div>
-    <input class="slider" type="range" min="1" max="3" value="1">
+    <input class="slider" type="range" min="1" max="3" value="1" />
     <div class="desc">
       <div>Bewertungskriterien vorgegeben, Bewertung durch Lehrkraft.</div>
       <div>Mitbestimmung einzelner Kriterien und Beteiligung an Gewichtigungen.</div>
@@ -270,10 +263,9 @@
     </div>
   </div>
 
-  <!-- Reihe 4 -->
   <div class="grid-item">
     <div class="dimension-label">Lernwege / Methoden / Material</div>
-    <input class="slider" type="range" min="1" max="3" value="1">
+    <input class="slider" type="range" min="1" max="3" value="1" />
     <div class="desc">
       <div>Lehrkraft steuert und gibt für alle vor.</div>
       <div>Eine Auswahl wird angeboten.</div>
@@ -281,25 +273,28 @@
     </div>
   </div>
 
-  <div></div>
-  <div></div>
+  <div></div><div></div>
 
 </div>
-<!-- GRID END -->
 
 <div class="controls">
   <button id="btnReset" class="btn btn-reset">Alle Regler zurücksetzen</button>
   <button id="btnSave" class="btn btn-save">Spinne herunterladen</button>
 </div>
 
+<!-- Spinnenüberschrift + Canvas -->
+<h2 style="text-align:center; margin-top:40px; margin-bottom:12px; font-weight:700;">
+  Formatspinne Unterrichtsöffnung
+</h2>
+
 <div id="radarCanvasWrap">
-  <canvas id="radarChart" width="520" height="520"></canvas>
+  <canvas id="radarChart" width="600" height="600"></canvas>
 </div>
 
 <footer>
   <div class="row">
-    <strong>Ingerfeld + Laube</strong> &middot;
-    <a href="https://www.ingerfeldundlaube.de" target="_blank">www.ingerfeldundlaube.de</a> &middot;
+    <strong>Ingerfeld + Laube</strong> ·
+    <a href="https://www.ingerfeldundlaube.de" target="_blank">www.ingerfeldundlaube.de</a> ·
     Instagram: <a href="https://instagram.com/ingerfeldundlaube" target="_blank">@ingerfeldundlaube</a>
   </div>
 </footer>
@@ -311,15 +306,15 @@ const sliders = Array.from(document.querySelectorAll('.slider'));
 
 const labels = [
   "Thema",
-  "Arbeitstempo",
-  "Meta-Lernen",
   "Aufgabenstellung",
-  "Lernschrittfolge",
-  "Feedbackprozesse",
   "Lernprodukte",
+  "Lernwege / Methoden / Material",
+  "Arbeitstempo",
+  "Lernschrittfolge",
   "Zielfestlegung",
-  "Beteiligung an Bewertung",
-  "Lernwege / Methoden / Material"
+  "Meta-Lernen",
+  "Feedbackprozesse",
+  "Beteiligung an Bewertung"
 ];
 
 const sliderToLabelIndex = [0,1,2,3,4,5,6,7,8,9];
@@ -328,6 +323,7 @@ const baseValues = labels.map(() => 1.3);
 let values = labels.map(() => 1);
 
 const ctx = document.getElementById('radarChart').getContext('2d');
+
 const chart = new Chart(ctx, {
   type: 'radar',
   data: {
@@ -371,18 +367,6 @@ const chart = new Chart(ctx, {
   }
 });
 
-function adjustValuesForArea(vals) {
-  const countAboveOne = vals.filter(v => v > 1).length;
-  if (countAboveOne === 1) {
-    const idx = vals.findIndex(v => v > 1);
-    const nextIdx = (idx + 1) % vals.length;
-    if (vals[nextIdx] === 1) {
-      vals[nextIdx] = vals[idx];
-    }
-  }
-  return vals;
-}
-
 sliders.forEach((sliderEl, i) => {
   sliderEl.addEventListener('input', () => {
     const targetIdx = sliderToLabelIndex[i];
@@ -401,12 +385,12 @@ document.getElementById('btnReset').addEventListener('click', () => {
 
 document.getElementById('btnSave').addEventListener('click', () => {
   const exportCanvas = document.createElement('canvas');
-  exportCanvas.width = 1200;
-  exportCanvas.height = 1200;
+  exportCanvas.width = 1400;
+  exportCanvas.height = 1400;
   const xctx = exportCanvas.getContext('2d');
   xctx.fillStyle = '#167a72';
-  xctx.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
-  xctx.drawImage(document.getElementById('radarChart'), 340, 340, 520, 520);
+  xctx.fillRect(0, 0, 1400, 1400);
+  xctx.drawImage(document.getElementById('radarChart'), 360, 360, 680, 680);
   const link = document.createElement('a');
   link.download = 'formatspinne-unterrichtsoeffnung.png';
   link.href = exportCanvas.toDataURL('image/png');
